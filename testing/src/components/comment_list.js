@@ -10,7 +10,7 @@ const CommentList = (props) => {
 };
 
 function mapStateToProps(state) {
-  return { comments: state.commenti }; // it takes state.commenti and assigns to comments fro ue here as props
+  return { comments: state.commenti }; // it takes state.commenti and assigns to comments from use here as props
 }
 
 export default connect(mapStateToProps)(CommentList);
