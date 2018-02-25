@@ -14,9 +14,9 @@ global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
 const $ = jquery(global.window);
 
-// build 'renderComponent' helper that should render a given react class [later in a DOM]
+// build 'renderComponent' helper that should render a given react class 
 function renderComponent(ComponentClass, props, state) {
-  const componentInstance = TestUtils.renderIntoDocument(
+  const componentInstance = TestUtils.renderIntoDocument( // this testutil method create the component ready to be use in a DOM later [complete also with state and props passed by the main funct 'renderComponent']
     <Provider store={createStore(reducers, state)}>
       <ComponentClass {...props} />
     </Provider>
