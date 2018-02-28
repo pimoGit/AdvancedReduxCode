@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export default function(ComposedComponent) {
+export default function(ComposedComponent) { // as a HOC export a function with a class and not just a class
   class Authentication extends Component {
     static contextTypes = {
       router: React.PropTypes.object
@@ -20,7 +20,7 @@ export default function(ComposedComponent) {
     }
 
     render() {
-      return <ComposedComponent {...this.props} />
+      return <ComposedComponent {...this.props} /> // the HOC will render the passed component to compose
     }
   }
 
