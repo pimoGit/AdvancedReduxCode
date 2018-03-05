@@ -13,7 +13,7 @@ export default function(ComposedComponent) { // as a HOC export a function with 
       }
     }
 
-    componentWillUpdate(nextProps) { // nextProps is a reference to the wen props when tehre's an update (life cicle method componentWillUpdate works so)
+    componentWillUpdate(nextProps) { // nextProps is a reference to the props when tehre's an update (life cicle method componentWillUpdate works so)
       if (!nextProps.authenticated) {
         this.context.router.push('/');
       }
