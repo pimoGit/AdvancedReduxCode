@@ -20,7 +20,7 @@ class UserList extends Component {
   render() {
     return (
       <div className="user-list">
-        {this.props.users.map(usr => this.renderUser(usr))} {/*is the same to call the caalbeck map funct as [.map(this.renderUser]*/}
+        {this.props.users.map(usr => this.renderUser(usr))} {/*is the same to call the callback map funct as [.map(this.renderUser]*/}
       </div>
     );
   }

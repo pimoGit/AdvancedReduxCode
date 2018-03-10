@@ -13,7 +13,7 @@ export default function({ dispatch }) {
         // create a new action with the old type, but
         // replace the promise with the reponse data
         const newAction = { ...action, payload: response };
-        dispatch(newAction); /* dispatch the new action to the top of the middleware stack (so the action will be evalueted again and do some other operation if/when needed [not this one the case now but you never know]) and finelly goes to reducers*/
+        dispatch(newAction); /* dispatch the new action to the top of the middleware stack (so the action will be evalueted again and do some other operation if/when needed [not this one the case now but you never know]) and finally goes to reducers*/
       });
   }
 }
