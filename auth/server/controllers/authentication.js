@@ -4,7 +4,7 @@ const config = require('../config');
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
+  return jwt.encode({ sub: user.id, iat: timestamp }, config.secret); // sub: and iat: are existing properties of jwt to be setted
 }
 
 exports.signin = function(req, res, next) {
@@ -39,7 +39,7 @@ exports.signup = function(req, res, next) {
     user.save(function(err) {
       if (err) { return next(err); }
 
-      // Repond to request indicating the user was created
+      // Repond to request indicating the user was created and returning the user token
       res.json({ token: tokenForUser(user) });
     });
   });
