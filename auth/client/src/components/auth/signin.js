@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';// import the HOC from redux-form
 import * as actions from '../../actions';
 
 class Signin extends Component {
-  handleFormSubmit({ email, password }) {
+  handleFormSubmit({ email, password }) {//callback #1
     // Need to do something to log user in
     this.props.signinUser({ email, password });
   }
@@ -19,10 +19,10 @@ class Signin extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { email, password }} = this.props;
+    const { handleSubmit, fields: { email, password }} = this.props;//hooks up handleSubmit (method from redux-form to the fields)
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}> {/*hooks up handleSubmit to the callback #1*/}
         <fieldset className="form-group">
           <label>Email:</label>
           <input {...email} className="form-control" />
