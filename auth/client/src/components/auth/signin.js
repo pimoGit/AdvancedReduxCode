@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';// import the HOC from redux-form
-import * as actions from '../../actions';
+import * as actions from '../../actions';//import actions creators
 
 class Signin extends Component {
   handleFormSubmit({ email, password }) {//callback #1
     // Need to do something to log user in
-    this.props.signinUser({ email, password });
+    this.props.signinUser({ email, password });//call the action creator
   }
 
   renderAlert() {
@@ -45,4 +45,4 @@ function mapStateToProps(state) {
 export default reduxForm({
   form: 'signin',
   fields: ['email', 'password']
-}, mapStateToProps, actions)(Signin);
+}, mapStateToProps, actions)(Signin);//hooks up the actions creators
