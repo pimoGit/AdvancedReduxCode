@@ -8,7 +8,7 @@ class Signin extends Component {
     this.props.signinUser({ email, password });//call the action creator
   }
 
-  renderAlert() {
+  renderAlert() { // show up the err msg if it exists [funct called in render..]
     if (this.props.errorMessage) {
       return (
         <div className="alert alert-danger">

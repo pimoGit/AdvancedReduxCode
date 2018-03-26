@@ -42,7 +42,7 @@ export function signupUser({ email, password }) {
   }
 }
 
-export function authError(error) {
+export function authError(error) { //this action is external from (signinUser e signupUser) coz it's easier to share with these 2 (so no repeat)
   return {
     type: AUTH_ERROR,
     payload: error
