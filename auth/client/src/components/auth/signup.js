@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
 
 class Signup extends Component {
+    
   handleFormSubmit(formProps) {
     // Call action creator to sign up the user!
     this.props.signupUser(formProps);
@@ -17,6 +18,20 @@ class Signup extends Component {
       );
     }
   }
+    
+
+    /* first draft attempt/idea of comp optimization
+    renderFieldsets(formProps){
+        var fieldsetArr = Object.keys(formProps).map(field =>
+            {
+        <fieldset className="form-group">
+          <label>{field}</label>
+          <input className="form-control" {...field} />
+          {field.touched && field.error && <div className="error">{field.error}</div>}
+        </fieldset>
+            return fieldsetArr; 
+        })   
+    }*/
 
   render() {
     const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
@@ -26,17 +41,17 @@ class Signup extends Component {
         <fieldset className="form-group">
           <label>Email:</label>
           <input className="form-control" {...email} />
-          {email.touched && email.error && <div className="error">{email.error}</div>}
+          {email.touched && email.error && <div className="error">{email.error}</div>} {/*if 2&&== true - return the last vale of the && seq [js trick]*/}
         </fieldset>
         <fieldset className="form-group">
           <label>Password:</label>
           <input className="form-control" {...password} type="password" />
-          {password.touched && password.error && <div className="error">{password.error}</div>}
+          {password.touched && password.error && <div className="error">{password.error}</div>} {/*manage 2 type of err with 1 block*/}
         </fieldset>
         <fieldset className="form-group">
           <label>Confirm Password:</label>
           <input className="form-control" {...passwordConfirm} type="password" />
-          {passwordConfirm.touched && passwordConfirm.error && <div className="error">{passwordConfirm.error}</div>}
+          {passwordConfirm.touched && passwordConfirm.error && <div className="error">{passwordConfirm.error}</div>} 
         </fieldset>
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign up!</button>
@@ -45,10 +60,12 @@ class Signup extends Component {
   }
 }
 
-function validate(formProps) {
+function validate(formProps) {// the arg is provided by HOC redux-form [and is a obj of the fields-value]
   const errors = {};
-
-  if (!formProps.email) {
+    
+    //console.log(formProps);
+    
+    /*if (!formProps.email) {
     errors.email = 'Please enter an email';
   }
 
@@ -58,7 +75,18 @@ function validate(formProps) {
 
   if (!formProps.passwordConfirm) {
     errors.passwordConfirm = 'Please enter a password confirmation';
-  }
+  }*/
+    
+    //my compressed approach of the above 
+    Object.keys(formProps).map(field => 
+        { 
+            if (!formProps[field]) {
+                //errors[field] = 'Please enter ' + (field === 'email' ? 'an ' : 'a ') + field;
+                errors[field] = `Please enter ${(field === 'email' ? 'an ' : 'a ') + field}`;
+              }
+        }
+    )
+
 
   if (formProps.password !== formProps.passwordConfirm) {
     errors.password = 'Passwords must match';
