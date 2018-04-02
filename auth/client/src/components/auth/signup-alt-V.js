@@ -20,27 +20,25 @@ class Signup extends Component {
   }
     
 
-    
+// first draft attempt/idea of comp optimization
+    renderFieldsets(fieldlist){
+        let fieldsetArr = Object.keys(fieldlist).map(field => 
+        <fieldset className="form-group" key={field}>
+          <label>{field}</label>
+          <input className="form-control" {...{field}} />
+          {field.touched && field.error && <div className="error">{field.error}</div>}
+        </fieldset>
+                                                    );
+        //console.log(fieldsetArr);
+        return fieldsetArr
+    }
+
   render() {
     const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <fieldset className="form-group">
-          <label>Email:</label>
-          <input className="form-control" {...email} />
-          {email.touched && email.error && <div className="error">{email.error}</div>} {/*if 2&&== true - return the last vale of the && seq [js trick]*/}
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Password:</label>
-          <input className="form-control" {...password} type="password" />
-          {password.touched && password.error && <div className="error">{password.error}</div>} {/*manage 2 type of err with 1 block*/}
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Confirm Password:</label>
-          <input className="form-control" {...passwordConfirm} type="password" />
-          {passwordConfirm.touched && passwordConfirm.error && <div className="error">{passwordConfirm.error}</div>} 
-        </fieldset>
+        {this.renderFieldsets(this.props.fields)}
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign up!</button>
       </form>
