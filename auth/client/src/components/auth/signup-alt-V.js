@@ -22,12 +22,12 @@ class Signup extends Component {
 
 // first draft attempt/idea of comp optimization
     renderFieldsets(fieldlist){
-        let fieldsetArr = Object.keys(fieldlist).map(field => 
+        let fieldsetArr = Object.keys(fieldlist).map(field => (
         <fieldset className="form-group" key={field}>
           <label>{field}</label>
           <input className="form-control" {...{field}} />
           {field.touched && field.error && <div className="error">{field.error}</div>}
-        </fieldset>
+        </fieldset>)
                                                     );
         //console.log(fieldsetArr);
         return fieldsetArr

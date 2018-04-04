@@ -34,6 +34,7 @@ export function signupUser({ email, password }) {
   return function(dispatch) {
     axios.post(`${ROOT_URL}/signup`, { email, password })
       .then(response => {
+        //dispatch(autUser());
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
         browserHistory.push('/feature');
@@ -41,6 +42,16 @@ export function signupUser({ email, password }) {
       .catch(response => dispatch(authError(response.data.error)));
   }
 }
+
+/* refactoring draft potential actions optimization
+export function autUser() {
+    localStorage.setItem('token', response.data.token);
+    browserHistory.push('/feature');
+    return{
+        type: AUTH_USER
+    }
+   
+}*/
 
 export function authError(error) { //this action is external from (signinUser e signupUser) coz it's easier to share with these 2 (so no repeat)
   return {
