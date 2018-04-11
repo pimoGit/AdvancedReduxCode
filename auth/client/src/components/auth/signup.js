@@ -84,7 +84,7 @@ function validate(formProps) {// the arg is provided by HOC redux-form [and is a
 }
 
 function mapStateToProps(state) {
-  return { errorMessage: state.auth.error };
+  return { errorMessage: state.auth.errorup };
 }
 
 export default reduxForm({

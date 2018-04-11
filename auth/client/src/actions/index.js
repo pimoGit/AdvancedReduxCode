@@ -3,7 +3,8 @@ import { browserHistory } from 'react-router';
 import {
   AUTH_USER,
   UNAUTH_USER,
-  AUTH_ERROR,
+  AUTH_ERROR_IN,
+  AUTH_ERROR_UP,
   FETCH_MESSAGE
 } from './types';
 
@@ -25,7 +26,7 @@ export function signinUser({ email, password }) {
       .catch(() => {
         // If request is bad...
         // - Show an error to the user
-        dispatch(authError('Bad Login Info'));
+        dispatch({ type: AUTH_ERROR_IN, payload: 'Bad Login Info' });
       });
   }
 }
@@ -39,7 +40,7 @@ export function signupUser({ email, password }) {
         localStorage.setItem('token', response.data.token);
         browserHistory.push('/feature');
       })
-      .catch(response => dispatch(authError(response.data.error)));
+      .catch(response => dispatch({ type: AUTH_ERROR_UP, payload: response.data.error }));
   }
 }
 
@@ -53,12 +54,7 @@ export function autUser() {
    
 }*/
 
-export function authError(error) { //this action is external from (signinUser e signupUser) coz it's easier to share with these 2 (so no repeat)
-  return {
-    type: AUTH_ERROR,
-    payload: error
-  };
-}
+
 
 export function signoutUser() {
   localStorage.removeItem('token');
