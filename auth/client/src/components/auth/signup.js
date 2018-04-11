@@ -4,9 +4,8 @@ import * as actions from '../../actions';
 
 class Signup extends Component {
     
-  handleFormSubmit(formProps) {
-    // Call action creator to sign up the user!
-    this.props.signupUser(formProps);
+  componentWillMount() {// clear the server err for every back and forth to the page for renderAlert()
+    this.props.authError('');
   }
 
   renderAlert() {
@@ -17,6 +16,11 @@ class Signup extends Component {
         </div>
       );
     }
+  }
+    
+  handleFormSubmit(formProps) {
+    // Call action creator to sign up the user!
+    this.props.signupUser(formProps);
   }
     
 
