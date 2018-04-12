@@ -43,7 +43,7 @@ export function signupUser({ email, password }) {
   }
 }
 
-/* refactoring draft potential actions optimization
+//refactoring draft potential actions optimization
 export function autUser() {
     localStorage.setItem('token', response.data.token);
     browserHistory.push('/feature');
@@ -51,7 +51,7 @@ export function autUser() {
         type: AUTH_USER
     }
    
-}*/
+}
 
 export function authError(error) { //this action is external from (signinUser e signupUser) coz it's easier to share with these 2 (so no repeat)
   return {
