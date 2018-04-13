@@ -23,6 +23,19 @@ class Signup extends Component {
     this.props.signupUser(formProps);
   }
     
+    
+  /* first draft attempt/idea of comp optimization
+    renderFieldsets(fieldlist){
+        let fieldsetArr = Object.keys(fieldlist).map(field => (
+        <fieldset className="form-group" key={field}>
+          <label>{field}</label>
+          <input className="form-control" {...{field}} />
+          {field.touched && field.error && <div className="error">{field.error}</div>}
+        </fieldset>)
+                                                    );
+        //console.log(fieldsetArr);
+        return fieldsetArr
+    }*/
 
     
   render() {
@@ -45,6 +58,7 @@ class Signup extends Component {
           <input className="form-control" {...passwordConfirm} type="password" />
           {passwordConfirm.touched && passwordConfirm.error && <div className="error">{passwordConfirm.error}</div>} 
         </fieldset>
+        {/*this.renderFieldsets(this.props.fields)*/}
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign up!</button>
       </form>
