@@ -31,9 +31,8 @@ class Signup extends Component {
           <label>{fieldobj.name}</label>
           <input className="form-control" {...fieldobj.name} />
           {fieldobj.touched && fieldobj.error && <div className="error">{fieldobj.error}</div>}
-        </fieldset>)
-                                                    );
-        console.log(fieldsetArr);
+        </fieldset>));
+        //console.log(fieldsetArr);
         return fieldsetArr;
     }
 
