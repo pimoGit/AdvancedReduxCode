@@ -24,15 +24,16 @@ class Signup extends Component {
   }
     
     
-  // first draft attempt/idea of comp optimization
+  // comp optimization
     renderFieldsets(fieldlist){
+                
         let fieldsetArr = Object.values(fieldlist).map(fieldobj => (
         <fieldset className="form-group" key={fieldobj.name}>
           <label>{fieldobj.name}</label>
-          <input className="form-control" {...fieldobj.name} />
+          <input className="form-control" {...fieldobj} type={fieldobj.name === 'password' || fieldobj.name === 'passwordConfirm' ? 'password' : ''} />
           {fieldobj.touched && fieldobj.error && <div className="error">{fieldobj.error}</div>}
-        </fieldset>));
-        //console.log(fieldsetArr);
+        </fieldset>
+        ));
         return fieldsetArr;
     }
 
